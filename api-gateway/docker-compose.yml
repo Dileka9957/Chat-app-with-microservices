@@ -12,7 +12,7 @@ services:
       - microservices-net
 
   user-service:
-    image: user-service-springboot
+    image: user-service
     ports:
       - "8081:8081"
     networks:
