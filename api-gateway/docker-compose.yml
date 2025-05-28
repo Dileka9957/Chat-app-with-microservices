@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  api-gateway:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+      - chat-service
+    networks:
+      - microservices-net
+
+  user-service:
+    image: user-service-springboot
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices-net
+
+  chat-service:
+    image: chat-service-node
+    ports:
+      - "4000:4000"
+      - "8080:8080"
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
